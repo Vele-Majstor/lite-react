@@ -1,0 +1,18 @@
+.accordion_toggle {
+  margin-bottom: 0;
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  color: #495057;
+  background: #f8f9fa;
+  font-weight: 600;
+  border-radius: 3px;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.accordion_collapse {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  background: #ffffff;
+  color: #495057;
+}

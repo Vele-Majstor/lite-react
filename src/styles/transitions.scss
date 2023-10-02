@@ -1,0 +1,142 @@
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.fade-up-enter {
+  transform: translateY(-1rem);
+  opacity: 0;
+}
+.fade-up-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms, transform 200ms;
+}
+.fade-up-enter-done {
+  transform: none;
+  -webkit-transform: none;
+}
+.fade-up-exit {
+  max-height: 1000px;
+  opacity: 1;
+}
+.fade-up-exit-active {
+  opacity: 0;
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), opacity 0.3s,
+    margin-bottom 0.3s;
+}
+
+.fade-down-enter {
+  transform: translateY(1rem);
+  opacity: 0;
+}
+.fade-down-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms, transform 200ms;
+}
+.fade-down-enter-done {
+  transform: none;
+  -webkit-transform: none;
+}
+.fade-down-exit {
+  max-height: 1000px;
+  opacity: 1;
+}
+.fade-down-exit-active {
+  opacity: 0;
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), opacity 0.3s,
+    margin-bottom 0.3s;
+}
+
+.fade-right-enter {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.fade-right-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: opacity 200ms, transform 200ms;
+}
+.fade-right-enter-done {
+  transform: none;
+  -webkit-transform: none;
+}
+.fade-right-exit {
+  max-height: 1000px;
+  opacity: 1;
+}
+.fade-right-exit-active {
+  opacity: 0;
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), opacity 0.3s,
+    margin-bottom 0.3s;
+}
+
+.fade-left-enter {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+.fade-left-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: opacity 200ms, transform 200ms;
+}
+.fade-left-enter-done {
+  transform: none;
+  -webkit-transform: none;
+}
+.fade-left-exit {
+  max-height: 1000px;
+  opacity: 1;
+}
+.fade-left-exit-active {
+  opacity: 0;
+  max-height: 0;
+  margin-bottom: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0, 1, 0, 1), opacity 0.3s,
+    margin-bottom 0.3s;
+}
+
+.scroll-enter {
+  max-height: 0;
+}
+
+.scroll-enter-active {
+  overflow: hidden;
+  max-height: 1000px;
+  transition: max-height 1s ease-in-out;
+}
+
+.scroll-enter-done {
+  transform: none;
+}
+
+.scroll-exit {
+  max-height: 100px;
+}
+
+.scroll-exit-active {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.2s linear;
+}

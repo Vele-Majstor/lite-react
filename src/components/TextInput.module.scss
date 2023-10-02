@@ -1,0 +1,271 @@
+.wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  font-size: var(--body-short-01-font-size, 0.875rem);
+  font-weight: var(--body-short-01-font-weight, 400);
+  letter-spacing: var(--body-short-01-letter-spacing, 0.16px);
+  line-height: var(--body-short-01-line-height, 1.28572);
+}
+
+.label {
+  border: 0;
+  box-sizing: border-box;
+  color: var(--text-02, #525252);
+  display: inline-block;
+  font-family: inherit;
+  font-size: 100%;
+  font-size: var(--label-01-font-size, 0.75rem);
+  font-weight: var(--label-01-font-weight, 400);
+  font-weight: 400;
+  letter-spacing: var(--label-01-letter-spacing, 0.32px);
+  line-height: var(--label-01-line-height, 1.33333);
+  line-height: 1rem;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  vertical-align: initial;
+
+  &-disabled {
+    color: var(--disabled-02, #c6c6c6);
+  }
+}
+
+.outerFieldWrapper {
+  align-items: flex-start;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  width: 100%;
+}
+
+.innerFieldWrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  background-color: var(--field-01, #fff);
+  border: none;
+  border-bottom: 1px solid var(--ui-04, #8d8d8d);
+  box-sizing: border-box;
+  color: var(--text-01, #161616);
+  font-family: inherit;
+  font-size: 100%;
+  font-size: var(--body-short-01-font-size, 0.875rem);
+  font-weight: var(--body-short-01-font-weight, 400);
+  height: 2.5rem;
+  letter-spacing: var(--body-short-01-letter-spacing, 0.16px);
+  line-height: var(--body-short-01-line-height, 1.28572);
+  margin: 0;
+  outline: 2px solid #0000;
+  outline-offset: -2px;
+  padding: 0 1rem;
+  transition: background-color 70ms cubic-bezier(0.2, 0, 0.38, 0.9),
+    outline 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  vertical-align: initial;
+  width: 100%;
+
+  &:focus,
+  &:active {
+    outline: 2px solid var(--focus, #0f62fe);
+    outline-offset: -2px;
+  }
+
+  &:disabled {
+    -webkit-text-fill-color: var(--disabled-02, #c6c6c6);
+    background-color: var(--field-disabled, #fff);
+    border-bottom: 1px solid #0000;
+    color: var(--text-disabled, #c6c6c6);
+    cursor: not-allowed;
+    outline: 2px solid #0000;
+    outline-offset: -2px;
+  }
+
+  &-invalid {
+    outline: 2px solid var(--support-01, #da1e28);
+    outline-offset: -2px;
+  }
+
+  &-light {
+    background-color: var(--field-02, #f4f4f4);
+  }
+}
+
+.helperText {
+  color: var(--text-02, #525252);
+  font-size: var(--helper-text-01-font-size, 0.75rem);
+  letter-spacing: var(--helper-text-01-letter-spacing, 0.32px);
+  line-height: var(--helper-text-01-line-height, 1.33333);
+  text-align: initial;
+  margin-top: 0.25rem;
+  opacity: 1;
+  width: 100%;
+  z-index: 0;
+
+  &-disabled {
+    color: var(--disabled-02, #c6c6c6);
+  }
+}
+
+.warningIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--support-03, #f1c21b);
+}
+.invalidIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--support-01, #da1e28);
+}
+
+.errorMessage {
+  color: var(--text-error, #da1e28);
+  display: block;
+  font-weight: 400;
+  max-height: 12.5rem;
+  overflow: visible;
+}
+
+.passwordVisibilityToggler {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  min-height: auto;
+  outline: 2px solid #0000;
+  outline-offset: -2px;
+  padding: 0;
+  color: black;
+  position: absolute;
+  right: 0;
+  transition: outline 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  width: 2.5rem;
+  overflow: visible;
+
+  &:disabled,
+  &:hover,
+  &:focus {
+    background: none;
+    color: black;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.password {
+  background-color: var(--field-01, #fff);
+  border: none;
+  border-bottom: 1px solid var(--ui-04, #8d8d8d);
+  box-sizing: border-box;
+  color: var(--text-01, #161616);
+  font-family: inherit;
+  font-size: 100%;
+  font-size: var(--body-short-01-font-size, 0.875rem);
+  font-weight: var(--body-short-01-font-weight, 400);
+  height: 2.5rem;
+  letter-spacing: var(--body-short-01-letter-spacing, 0.16px);
+  line-height: var(--body-short-01-line-height, 1.28572);
+  margin: 0;
+  outline: 2px solid #0000;
+  outline-offset: -2px;
+  padding: 0 1rem;
+  transition: background-color 70ms cubic-bezier(0.2, 0, 0.38, 0.9),
+    outline 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  vertical-align: initial;
+  width: 100%;
+
+  &:focus,
+  &:active {
+    outline: 2px solid var(--focus, #0f62fe);
+    outline-offset: -2px;
+  }
+
+  &:disabled {
+    -webkit-text-fill-color: var(--disabled-02, #c6c6c6);
+    background-color: var(--field-disabled, #fff);
+    border-bottom: 1px solid #0000;
+    color: var(--text-disabled, #c6c6c6);
+    cursor: not-allowed;
+    outline: 2px solid #0000;
+    outline-offset: -2px;
+  }
+
+  &-invalid {
+    outline: 2px solid var(--support-01, #da1e28);
+    outline-offset: -2px;
+    &--icon {
+      right: -1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--support-01, #da1e28);
+      overflow: visible;
+    }
+  }
+
+  &-light {
+    background-color: var(--field-02, #f4f4f4);
+  }
+}
+
+.text-area {
+  background-color: var(--field-01, #fff);
+  border: none;
+  border-bottom: 1px solid var(--ui-04, #8d8d8d);
+  box-sizing: border-box;
+  color: var(--text-01, #161616);
+  font-family: inherit;
+  font-size: 100%;
+  font-size: var(--body-long-01-font-size, 0.875rem);
+  font-weight: var(--body-long-01-font-weight, 400);
+  height: 100%;
+  letter-spacing: var(--body-long-01-letter-spacing, 0.16px);
+  line-height: var(--body-long-01-line-height, 1.42857);
+  margin: 0;
+  min-height: 2.5rem;
+  min-width: 10rem;
+  outline: 2px solid #0000;
+  outline-offset: -2px;
+  padding: 0.6875rem 1rem;
+  resize: vertical;
+  transition: background-color 70ms cubic-bezier(0.2, 0, 0.38, 0.9),
+    outline 70ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  vertical-align: initial;
+  width: 100%;
+
+  &:focus,
+  &:active {
+    outline: 2px solid var(--focus, #0f62fe);
+    outline-offset: -2px;
+  }
+
+  &:disabled {
+    -webkit-text-fill-color: var(--disabled-02, #c6c6c6);
+    background-color: var(--field-disabled, #fff);
+    border-bottom: 1px solid #0000;
+    color: var(--text-disabled, #c6c6c6);
+    cursor: not-allowed;
+    outline: 2px solid #0000;
+    outline-offset: -2px;
+  }
+
+  &-invalid {
+    outline: 2px solid var(--support-01, #da1e28);
+    outline-offset: -2px;
+  }
+
+  &-light {
+    background-color: var(--field-02, #f4f4f4);
+  }
+}

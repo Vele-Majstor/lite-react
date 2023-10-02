@@ -1,0 +1,183 @@
+.button {
+  align-items: center;
+  border: 0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-family: inherit;
+  font-size: 0.845rem;
+  font-weight: 400;
+  justify-content: space-between;
+  letter-spacing: 0.16px;
+  line-height: 1.28572;
+  margin: 0;
+  max-width: 20rem;
+  min-height: 3rem;
+  outline: none;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: background 70ms cubic-bezier(0, 0, 0.38, 0.9),
+    box-shadow 70ms cubic-bezier(0, 0, 0.38, 0.9),
+    border-color 70ms cubic-bezier(0, 0, 0.38, 0.9),
+    outline 70ms cubic-bezier(0, 0, 0.38, 0.9);
+  vertical-align: initial;
+  vertical-align: top;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+
+  &-primary {
+    background-color: var(--interactive-01, #0f62fe);
+    color: var(--text-04, #fff);
+    border: 1px solid var(--white);
+
+    &:hover {
+      color: var(--text-04, #fff);
+      background-color: var(--hover-primary, #0353e9);
+    }
+
+    &:focus {
+      border-color: var(--focus, #0f62fe);
+      box-shadow: inset 0 0 0 1px var(--focus, #0f62fe),
+        inset 0 0 0 2px var(--ui-background, #f4f4f4);
+    }
+
+    &:active {
+      background-color: var(--active-primary, #002d9c);
+    }
+  }
+  &-secondary {
+    background-color: var(--interactive-02, #0f62fe);
+    color: var(--text-04, #fff);
+    border: 1px solid var(--interactive-02);
+
+    &:hover {
+      color: var(--text-04, #fff);
+      background-color: var(--hover-secondary, #393939);
+    }
+
+    &:focus {
+      border-color: var(--focus, #6f6f6f);
+      box-shadow: inset 0 0 0 1px var(--focus, #0f62fe),
+        inset 0 0 0 2px var(--ui-background, #f4f4f4);
+    }
+
+    &:active {
+      background-color: var(--active-secondary, #002d9c);
+    }
+  }
+  &-tertiary {
+    background-color: var(--transparent);
+    color: var(--interactive-03, #0f62fe);
+    border: 1px solid var(--interactive-03, #0f62fe);
+
+    &:hover {
+      color: var(--inverse-01, #fff);
+      background-color: var(--hover-tertiary, #0353e9);
+    }
+
+    &:focus {
+      border-color: var(--focus, #6f6f6f);
+      box-shadow: inset 0 0 0 1px var(--focus, #0f62fe),
+        inset 0 0 0 2px var(--ui-background, #f4f4f4);
+      background-color: var(--interactive-03, #0f62fe);
+      color: var(--inverse-01, #fff);
+    }
+
+    &:active {
+      background-color: var(--active-tertiary, #002d9c);
+      color: var(--inverse-01, #fff);
+    }
+  }
+  &-ghost {
+    background-color: var(--transparent);
+    color: var(--interactive-01, #0f62fe);
+    border: 1px solid var(--transparent);
+
+    &:hover {
+      background-color: var(--hover-ui, #e5e5e5);
+      color: var(--hover-primary-text, #0043ce);
+    }
+
+    &:focus {
+      border-color: var(--focus-secondary, #6f6f6f);
+      box-shadow: inset 0 0 0 1px var(--focus, #0f62fe),
+        inset 0 0 0 2px var(--ui-background, #f4f4f4);
+    }
+
+    &:active {
+      background-color: var(--active-ui, #c6c6c6);
+    }
+  }
+
+  &-danger {
+    background-color: var(--danger-01, #da1e28);
+    color: var(--text-04, #fff);
+
+    &:hover {
+      background-color: var(--hover-danger, #b81921);
+      color: var(--text-04, #fff);
+    }
+
+    &:focus {
+      border-color: var(--focus, #0f62fe);
+      box-shadow: inset 0 0 0 1px var(--focus, #0f62fe),
+        inset 0 0 0 2px var(--cds-ui-background, #f4f4f4);
+    }
+
+    &:active {
+      background-color: var(--active-danger, #750e13);
+    }
+  }
+
+  &:disabled {
+    background: var(--disabled-02);
+    border-color: var(--disabled-02);
+    box-shadow: none;
+    color: var(--disabled-03);
+    cursor: not-allowed;
+  }
+
+  &-normal {
+    padding: calc(0.875rem - 3px) calc(var(--spacing-10) - 1px)
+      calc(0.875rem - 3px) calc(var(--spacing-05) - 1px);
+    height: 3rem;
+  }
+
+  &-field {
+    min-height: 2.5rem;
+    padding: calc(0.675rem - 3px) 60px calc(0.675rem - 3px) 12px;
+  }
+
+  &-small {
+    min-height: 2rem;
+    padding: calc(0.375rem - 3px) 60px calc(0.375rem - 3px) 12px;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    height: 1rem;
+    position: absolute;
+    right: 1rem;
+    width: 1rem;
+  }
+
+  &__icon-only {
+    align-items: center;
+    cursor: pointer;
+    display: inline-flex;
+    overflow: visible;
+    position: relative;
+    padding: 0 0.9375rem;
+  }
+
+  &__icon-only &__icon {
+    position: static;
+    text-align: center;
+  }
+}

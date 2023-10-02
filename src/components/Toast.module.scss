@@ -1,0 +1,133 @@
+.toast-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  z-index: var(--toast-container);
+
+  &-top-right {
+    top: 1rem;
+    right: 0.5rem;
+  }
+
+  &-bottom-right {
+    bottom: 1rem;
+    right: 0.5rem;
+  }
+}
+
+@mixin severity($textColor, $bgColor, $borderColor) {
+  color: $textColor;
+  background-color: $bgColor;
+  border: solid $borderColor;
+  border-width: 0 0 0 6px;
+  margin: 0.5rem 0;
+}
+
+.toast {
+  opacity: 0.9;
+  border-radius: 3px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  z-index: var(--toast);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  & > *:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+
+  &-info {
+    @include severity(#044868, #b3e5fc, #0891cf);
+  }
+
+  &-success {
+    @include severity(#224a23, #c8e6c9, #439446);
+  }
+
+  &-warning {
+    @include severity(#6d5100, #ffecb3, #d9a300);
+  }
+
+  &-error {
+    @include severity(#73000c, #ffcdd2, #e60017);
+  }
+}
+
+.messageContent {
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.toastIcon {
+  font-size: 2rem;
+}
+
+.messageText {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 1rem;
+  flex: 1 1 auto;
+  font-size: 1rem;
+  font-weight: normal;
+  opacity: 0.9;
+}
+
+.toastSummary {
+  font-weight: 600;
+}
+
+.toastDetail {
+  margin: 0.5rem 0 0 0;
+  overflow-wrap: anywhere;
+}
+
+.toastCloseButton {
+  margin: 0.5rem 1rem;
+  overflow: hidden;
+  opacity: 0.7;
+  border: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  background: inherit;
+
+  &:hover {
+    background-color: #efefef;
+  }
+
+  &-info {
+    color: inherit;
+    &:hover {
+      color: lighten(#044868, 5%);
+      outline: 2px solid #044868;
+    }
+  }
+
+  &-success {
+    color: inherit;
+    &:hover {
+      color: lighten(#224a23, 10%);
+      outline: 2px solid #224a23;
+    }
+  }
+
+  &-warning {
+    color: inherit;
+    &:hover {
+      color: lighten(#6d5100, 10%);
+      outline: 2px solid #6d5100;
+    }
+  }
+
+  &-error {
+    color: inherit;
+    &:hover {
+      color: lighten(#73000c, 10%);
+      outline: 2px solid #73000c;
+    }
+  }
+}

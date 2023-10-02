@@ -1,0 +1,49 @@
+.wrapper {
+  align-items: flex-start;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  font-size: var(--body-short-01-font-size, 0.875rem);
+  font-weight: var(--body-short-01-font-weight, 400);
+  letter-spacing: var(--body-short-01-letter-spacing, 0.16px);
+  line-height: var(--body-short-01-line-height, 1.28572);
+}
+
+.radio_button_group {
+  border: none;
+  box-sizing: border-box;
+  display: flex;
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  vertical-align: initial;
+
+  &--vertical {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  &--horizontal {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__legend_text {
+    border: 0;
+    color: var(--text-02, #525252);
+    display: inline-block;
+    font-family: inherit;
+    font-size: 100%;
+    font-size: var(--label-01-font-size, 0.75rem);
+    font-weight: var(--label-01-font-weight, 400);
+    font-weight: 400;
+    letter-spacing: var(--label-01-letter-spacing, 0.32px);
+    line-height: var(--label-01-line-height, 1.33333);
+    line-height: 1rem;
+    margin: 0 0 0.5rem;
+    padding: 0;
+    vertical-align: initial;
+  }
+}

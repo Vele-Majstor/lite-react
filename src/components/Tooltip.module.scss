@@ -1,0 +1,65 @@
+$bgColor: var(--cool-gray-80);
+$borderRadius: 3px;
+$arrowSize: 7px;
+
+.tooltip {
+  position: relative;
+  display: inline;
+}
+
+.tooltipText {
+  width: max-content;
+  max-width: calc(min(20rem, 80vw));
+  position: absolute;
+  z-index: 999999;
+  background-color: $bgColor;
+  color: #fff;
+  border-radius: $borderRadius;
+  word-break: normal;
+  pointer-events: none;
+  padding: 0.5rem 1rem;
+  display: none;
+
+  &::after {
+    content: " ";
+    position: absolute;
+    border-width: $arrowSize;
+    border-style: solid;
+  }
+
+  &.visible {
+    display: block;
+  }
+
+  &.left {
+    &::after {
+      top: calc(100% / 2 - #{$arrowSize});
+      left: 100%;
+      border-color: transparent transparent transparent $bgColor;
+    }
+  }
+
+  &.right {
+    &::after {
+      top: calc(100% / 2 - #{$arrowSize});
+      right: 100%;
+      border-color: transparent $bgColor transparent transparent;
+    }
+  }
+
+  &.top {
+    &::after {
+      top: 100%;
+      left: calc(100% / 2 - #{$arrowSize});
+      border-color: $bgColor transparent transparent transparent;
+    }
+  }
+
+  &.bottom {
+    &::after {
+      left: calc(100% / 2 - #{$arrowSize});
+      bottom: 100%;
+      border-color: transparent transparent $bgColor transparent;
+    }
+  }
+}

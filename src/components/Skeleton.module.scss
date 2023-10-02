@@ -1,0 +1,36 @@
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: #e9ecef;
+
+  &::after {
+    content: "";
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.4),
+      rgba(255, 255, 255, 0)
+    );
+    animation: skeleton-animation 1.2s infinite;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(-100%);
+    z-index: 1;
+  }
+
+  &_circle {
+    border-radius: 50%;
+  }
+}
+
+@keyframes skeleton-animation {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
