@@ -1,0 +1,854 @@
+@use "../styles/mixins.scss";
+
+.data-table-container {
+  position: relative;
+  padding-block-start: var(--spacing-01);
+}
+
+.data-table-content {
+  display: block;
+  overflow-x: auto;
+}
+
+.data-table-content:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+
+  @media screen and (prefers-contrast) {
+    outline-style: dotted;
+  }
+}
+
+//----------------------------------------------------------------------------
+// Table title text
+//----------------------------------------------------------------------------
+.data-table-header {
+  background: var(--layer);
+  padding-block-end: var(--spacing-06);
+  padding-block-start: var(--spacing-05);
+  padding-inline: var(--spacing-05);
+}
+
+.data-table-header__title {
+  font-size: var(heading-03-font-size, 1.25rem);
+  font-weight: var(heading-03-font-weight, 400);
+  line-height: var(heading-03-line-height, 1.4);
+  letter-spacing: var(heading-03-letter-spacing, 0);
+
+  color: var(--text-primary);
+}
+
+.data-table-header__description {
+  font-size: var(body-compact-01-font-size, 0.875rem);
+  font-weight: var(body-compact-01-font-weight, 400);
+  line-height: var(body-compact-01-line-height, 1.28572);
+  letter-spacing: var(body-compact-01-letter-spacing, 0.16px);
+
+  color: var(--text-secondary);
+
+  @include breakpoint("medium") {
+    max-inline-size: 50ch;
+  }
+
+  @include breakpoint("large") {
+    max-inline-size: 80ch;
+  }
+}
+
+//----------------------------------------------------------------------------
+// Data table
+//----------------------------------------------------------------------------
+.data-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  inline-size: 100%;
+}
+
+.data-table thead {
+  font-size: var(heading-01-font-size, 1.25rem);
+  font-weight: var(heading-01-font-weight, 400);
+  line-height: var(heading-01-line-height, 1.4);
+  letter-spacing: var(heading-01-letter-spacing, 0);
+
+  background-color: var(--layer-accent);
+}
+
+.data-table tbody {
+  font-size: var(body-compact-01-font-size, 0.875rem);
+  font-weight: var(body-compact-01-font-weight, 400);
+  line-height: var(body-compact-01-line-height, 1.28572);
+  letter-spacing: var(body-compact-01-letter-spacing, 0.16px);
+
+  background-color: var(--layer);
+  inline-size: 100%;
+}
+
+.data-table tr {
+  border: none;
+  block-size: var(--spacing-09);
+  inline-size: 100%;
+}
+
+.data-table tbody tr,
+.data-table tbody tr td,
+.data-table tbody tr th {
+  transition: background-color var(--duration-fast-01)
+    motion(entrance, productive);
+}
+
+.data-table tbody tr:hover {
+  background: var(--layer-hover);
+}
+
+.data-table tbody tr:hover td,
+.data-table tbody tr:hover th {
+  background: var(--layer-hover);
+  border-block-end: 1px solid var(--layer-hover);
+  border-block-start: 1px solid var(--layer-hover);
+  color: var(--text-primary);
+}
+
+.data-table tr:hover .link {
+  color: var(--link-secondary);
+}
+
+.data-table tr:hover .link--disabled {
+  color: var(--text-disabled);
+}
+
+.data-table th,
+.data-table td {
+  text-align: start;
+  vertical-align: middle;
+}
+.data-table.data-table--top-aligned-body {
+  &.data-table--lg tr:not([data-child-row]) td:not(.table-expand) {
+    padding-block-end: var(--spacing-05);
+    padding-block-start: var(--spacing-05);
+
+    &.table-column-menu {
+      padding-block-start: var(--spacing-03);
+    }
+
+    &.table-column-checkbox:not(.table-column-radio) {
+      padding-block-start: convert.to-rem(13px);
+    }
+  }
+
+  td {
+    vertical-align: top;
+  }
+}
+
+.data-table.data-table--top-aligned-header {
+  &.data-table--lg th:not(.table-expand):not(.table-sort__header) {
+    padding-block-end: $spacing-05;
+    padding-block-start: $spacing-05;
+
+    &.table-column-menu {
+      padding-block-start: $spacing-03;
+    }
+
+    &.table-column-checkbox {
+      padding-block-start: convert.to-rem(13px);
+    }
+  }
+
+  th {
+    vertical-align: top;
+  }
+}
+
+.data-table th[align="right"],
+.data-table td[align="right"] {
+  text-align: end;
+}
+
+.data-table th[align="center"],
+.data-table td[align="center"] {
+  text-align: center;
+}
+
+.data-table th {
+  background-color: var(--layer-accent);
+  color: var(--text-primary);
+  padding-inline-end: var(--spacing-05);
+  padding-inline-start: var(--spacing-05);
+}
+
+.data-table th:last-of-type {
+  // Do not use `position: relative`, as its behavior is undefined for many table elements: https://www.w3.org/TR/CSS21/visuren.html#propdef-position
+  position: static;
+  inline-size: auto;
+}
+
+.data-table .table-header-label {
+  text-align: start;
+}
+
+.data-table td,
+.data-table tbody th {
+  background: var(--layer);
+  border-block-end: 1px solid var(--border-subtle);
+  border-block-start: 1px solid var(--layer);
+  color: var(--text-secondary);
+  padding-inline-end: var(--spacing-05);
+  padding-inline-start: var(--spacing-05);
+
+  + td:first-of-type {
+    padding-inline-start: var(--spacing-04);
+  }
+}
+
+@supports (-moz-appearance: none) {
+  .data-table td {
+    // Fix to show borders in ff
+    background-clip: padding-box;
+  }
+}
+
+// Form Control Overrides
+
+.data-table .list-box input[role="combobox"],
+.data-table .list-box input[type="text"],
+.data-table .dropdown,
+.data-table .list-box,
+.data-table .number input[type="number"],
+.data-table .number__control-btn::before,
+.data-table .number__control-btn::after,
+.data-table .text-input,
+.data-table .select-input {
+  background-color: $field-02;
+}
+
+// Overflow Menu Overrides
+.data-table td.table-column-menu .overflow-menu[aria-expanded="false"]:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+
+  @media screen and (prefers-contrast) {
+    outline-style: dotted;
+  }
+}
+
+.data-table td.table-column-menu .overflow-menu[aria-expanded="true"]:focus {
+  outline: none;
+}
+
+@media screen and (hover: hover),
+  (-ms-high-contrast: active),
+  (-ms-high-contrast: none) {
+  .data-table td.table-column-menu .overflow-menu .overflow-menu__icon {
+    opacity: 0;
+  }
+}
+
+.data-table
+  td.table-column-menu
+  .overflow-menu.overflow-menu--open
+  .overflow-menu__icon {
+  opacity: 1;
+}
+
+.data-table.data-table--visible-overflow-menu
+  td.table-column-menu
+  .overflow-menu
+  .overflow-menu__icon,
+.data-table td.table-column-menu .overflow-menu:hover .overflow-menu__icon,
+.data-table td.table-column-menu .overflow-menu:focus .overflow-menu__icon,
+.data-table tr:hover td.table-column-menu .overflow-menu .overflow-menu__icon {
+  opacity: 1;
+}
+
+.table-row--menu-option
+  .overflow-menu-options__btn
+  .overflow-menu-options__option-content
+  svg {
+  position: relative;
+  // Used to center svg without setting display flex //display block needed for overflow text truncation
+  inset-block-start: convert.to-rem(3px);
+  margin-inline-end: var(--spacing-03);
+}
+
+.data-table .overflow-menu,
+.data-table .overflow-menu__trigger {
+  &:hover {
+    background-color: var(--layer-selected-hover);
+  }
+}
+
+.data-table--selected .overflow-menu,
+.data-table--selected .overflow-menu__trigger {
+  &:hover {
+    background-color: var(--layer-hover);
+  }
+}
+
+.data-table--selected .link:not(.link--disabled) {
+  color: var(--link-secondary);
+}
+
+.data-table--xs td.table-column-menu,
+.data-table--sm td.table-column-menu {
+  block-size: convert.to-rem(24px);
+  padding-block-end: 0;
+  padding-block-start: 0;
+}
+
+.data-table--sm td.table-column-menu {
+  block-size: convert.to-rem(32px);
+}
+
+.data-table--md td.table-column-menu {
+  block-size: convert.to-rem(40px);
+}
+
+.data-table--xl .table-column-menu {
+  padding-block-start: var(--spacing-03);
+}
+
+//----------------------------------------------------------------------------
+//ZEBRA
+//----------------------------------------------------------------------------
+
+.data-table--zebra tbody tr:not(.parent-row):nth-child(odd) td {
+  border-block-end: 1px solid var(--layer);
+}
+
+.data-table--zebra tbody tr:not(.parent-row):nth-child(even) td {
+  background-color: var(--layer-accent);
+  border-block-end: 1px solid var(--layer-accent);
+  border-block-start: 1px solid var(--layer-accent);
+}
+
+.data-table--zebra tbody tr:not(.parent-row):hover td {
+  background-color: var(--layer-hover);
+  border-block-end: 1px solid var(--layer-hover);
+  border-block-start: 1px solid var(--layer-hover);
+}
+
+//----------------------------------------------------------------------------
+// Select
+//----------------------------------------------------------------------------
+.table-column-checkbox .checkbox-label {
+  min-block-size: var(--spacing-06);
+  padding-inline-start: 0;
+}
+
+.table-column-checkbox .checkbox-label::before {
+  margin-block-start: convert.to-rem(2px);
+}
+
+.table-column-checkbox .checkbox-label::after {
+  inset-block-start: convert.to-rem(7.5px);
+}
+
+.data-table th.table-column-checkbox {
+  // Do not use `position: relative`, as its behavior is undefined for many table elements: https://www.w3.org/TR/CSS21/visuren.html#propdef-position
+  position: static;
+  background: var(--layer-accent);
+  inline-size: convert.to-rem(32px);
+  transition: background-color var(--duration-fast-01)
+    motion(entrance, productive);
+}
+
+.data-table thead th.table-column-checkbox,
+.data-table tbody td.table-column-checkbox,
+.data-table thead th.table-expand,
+.data-table tbody td.table-expand {
+  min-inline-size: 0;
+}
+
+.data-table thead th.table-column-checkbox,
+.data-table tbody td.table-column-checkbox {
+  min-inline-size: 2.5rem;
+  // spacing between checkbox / chevron and next cell should be 8px / 0.5rem
+  padding-inline-end: convert.to-rem(4px);
+  padding-inline-start: 1rem;
+}
+
+.data-table thead th.table-expand,
+.data-table tbody td.table-expand {
+  block-size: convert.to-rem(32px);
+  inline-size: convert.to-rem(32px);
+}
+
+.data-table--xs thead th.table-expand,
+.data-table--xs tbody td.table-expand {
+  padding: 0 0 0 0.5rem;
+  block-size: convert.to-rem(24px);
+  inline-size: convert.to-rem(24px);
+}
+
+.data-table--sm thead th.table-expand,
+.data-table--sm tbody td.table-expand {
+  padding: 0;
+  block-size: convert.to-rem(32px);
+  inline-size: convert.to-rem(32px);
+  padding-inline-start: 0.5rem;
+}
+
+.data-table--md thead th.table-expand,
+.data-table--md tbody td.table-expand {
+  padding: convert.to-rem(4px) 0 convert.to-rem(4px) convert.to-rem(8px);
+  block-size: convert.to-rem(40px);
+  inline-size: convert.to-rem(40px);
+}
+
+.data-table--xl thead th.table-expand,
+.data-table--xl tbody td.table-expand {
+  block-size: convert.to-rem(64px);
+  padding-block-end: convert.to-rem(22px);
+  padding-block-start: convert.to-rem(10px);
+}
+
+.data-table--xl .table-column-checkbox {
+  padding-block-start: convert.to-rem(13px);
+}
+
+.data-table--xl .table-column-radio {
+  padding-block-start: var(--spacing-05);
+}
+
+//----------------------------------------------------------------------------
+// Radio
+//----------------------------------------------------------------------------
+.table-column-radio {
+  inline-size: 48px;
+}
+
+.table-column-radio .radio-button__appearance {
+  margin-inline-end: convert.to-rem(-2px);
+}
+
+// default selected row + zebra select - even child
+.data-table--zebra tbody tr:nth-child(odd).data-table--selected td,
+tr.data-table--selected td {
+  background-color: var(--layer-selected);
+  // Bottom border acts as separator from other rows
+  border-block-end: 1px solid var(--layer-active);
+  border-block-start: 1px solid var(--layer-selected);
+  color: var(--text-primary);
+}
+
+// First row
+.data-table--zebra
+  tbody
+  tr:first-of-type:nth-child(odd).data-table--selected
+  td,
+tr.data-table--selected:first-of-type td {
+  // Top border acts as separator from thead
+  border-block-start: 1px solid var(--border-subtle-selected);
+}
+
+// last row + zebra select last
+.data-table--zebra tbody tr:last-of-type:nth-child(odd).data-table--selected td,
+.data-table--zebra
+  tbody
+  tr:last-of-type:nth-child(even).data-table--selected
+  td,
+tr.data-table--selected:last-of-type td {
+  border-block-end: 1px solid var(--layer-selected);
+  // Doesn't need separators
+  border-block-start: 1px solid var(--layer-selected);
+}
+
+// zebra select - odd child
+.data-table--zebra tbody tr:nth-child(even).data-table--selected td {
+  border-block-end: 1px solid var(--layer-active);
+}
+
+.data-table--zebra tbody tr:nth-child(even).data-table--selected:hover td {
+  border-block-end: 1px solid var(--data-table-column-hover);
+}
+
+// hover + zebra select - even child
+.data-table--zebra tbody tr:nth-child(odd).data-table--selected:hover td,
+.data-table tbody .data-table--selected:hover td {
+  background: var(--data-table-column-hover);
+  border-block-end: 1px solid var(--data-table-column-hover);
+  border-block-start: 1px solid var(--data-table-column-hover);
+  color: var(--text-primary);
+}
+
+// selected overflow menu
+.data-table--selected .overflow-menu .overflow-menu__icon {
+  opacity: 1;
+}
+
+//----------------------------------------------------------------------------
+// Extra Small
+//----------------------------------------------------------------------------
+.data-table--xs thead tr,
+.data-table--xs tbody tr,
+.data-table--xs tbody tr th {
+  block-size: convert.to-rem(24px);
+}
+
+.data-table--xs .table-header-label {
+  padding-block-end: convert.to-rem(2px);
+  padding-block-start: convert.to-rem(2px);
+}
+
+.data-table--xs td,
+.data-table--xs tbody tr th {
+  padding-block-end: convert.to-rem(2px);
+  padding-block-start: convert.to-rem(2px);
+}
+
+.data-table--xs .overflow-menu {
+  block-size: calc(100% + 1px);
+  inline-size: convert.to-rem(32px);
+}
+
+.data-table.data-table--xs:not(.data-table--top-aligned-body)
+  td.table-column-checkbox,
+.data-table.data-table--xs:not(.data-table--top-aligned-header)
+  th.table-column-checkbox {
+  padding-block-end: 0;
+  padding-block-start: 0;
+}
+
+.data-table.data-table--xs .table-column-checkbox .checkbox-label {
+  block-size: convert.to-rem(23px);
+  // 24px row - 1px border
+  min-block-size: convert.to-rem(23px);
+}
+
+//----------------------------------------------------------------------------
+// Small
+//----------------------------------------------------------------------------
+.data-table--sm thead tr,
+.data-table--sm tbody tr,
+.data-table--sm tbody tr th {
+  block-size: convert.to-rem(32px);
+}
+
+.data-table--sm .table-header-label {
+  padding-block-end: convert.to-rem(7px);
+  padding-block-start: convert.to-rem(7px);
+}
+
+.data-table--sm td,
+.data-table--sm tbody tr th,
+.data-table--sm.data-table--top-aligned-header th.table-column-checkbox {
+  padding-block-end: convert.to-rem(6px);
+  padding-block-start: convert.to-rem(7px);
+}
+
+.data-table.data-table--sm:not(.data-table--top-aligned-body)
+  td.table-column-checkbox,
+.data-table.data-table--sm:not(.data-table--top-aligned-header)
+  th.table-column-checkbox {
+  padding-block-end: convert.to-rem(3px);
+  padding-block-start: convert.to-rem(3px);
+}
+
+.data-table--sm .overflow-menu {
+  block-size: calc(100% + 1px);
+}
+
+//----------------------------------------------------------------------------
+// Medium
+//----------------------------------------------------------------------------
+.data-table--md thead tr,
+.data-table--md tbody tr,
+.data-table--md tbody tr th {
+  block-size: convert.to-rem(40px);
+}
+
+.data-table--md .table-header-label,
+.data-table--md.data-table--top-aligned-header th.table-column-checkbox {
+  padding-block-end: convert.to-rem(7px);
+  padding-block-start: convert.to-rem(7px);
+}
+
+.data-table--md td,
+.data-table--md tbody tr th {
+  padding-block-end: convert.to-rem(6px);
+  padding-block-start: convert.to-rem(7px);
+}
+
+.data-table.data-table--md:not(.data-table--top-aligned-body)
+  td.table-column-checkbox,
+.data-table.data-table--md:not(.data-table--top-aligned-header)
+  th.table-column-checkbox {
+  padding-block-end: convert.to-rem(3px);
+  padding-block-start: convert.to-rem(3px);
+}
+
+.data-table--md .table-column-menu {
+  padding-block-end: convert.to-rem(3px);
+  padding-block-start: convert.to-rem(3px);
+}
+
+//----------------------------------------------------------------------------
+// Extra Large
+//----------------------------------------------------------------------------
+.data-table--xl thead tr,
+.data-table--xl tbody tr,
+.data-table--xl tbody tr th {
+  block-size: convert.to-rem(64px);
+}
+
+.data-table--xl .table-header-label {
+  padding-block-end: var(--spacing-05);
+  padding-block-start: var(--spacing-05);
+}
+
+.data-table--xl td,
+.data-table--xl tbody tr th {
+  padding-block-end: var(--spacing-05);
+  padding-block-start: var(--spacing-05);
+}
+
+.data-table--xl th,
+.data-table--xl td {
+  vertical-align: top;
+}
+
+.data-table--xl .data-table--cell-secondary-text {
+  font-size: var(label-01-font-size, 1.25rem);
+  font-weight: var(label-01-font-weight, 400);
+  line-height: var(label-01-line-height, 1.4);
+  letter-spacing: var(label-01-letter-spacing, 0);
+}
+
+//----------------------------------------------------------------------------
+// Static
+//----------------------------------------------------------------------------
+.data-table--static {
+  inline-size: auto;
+}
+
+.data-table-container--static {
+  inline-size: fit-content;
+}
+
+// -------------
+// Sticky header
+// -------------
+.data-table_inner-container {
+  background-color: var(--layer-accent);
+  transform: translateZ(0);
+}
+
+.data-table--sticky-header {
+  display: block;
+  overflow-y: scroll;
+
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    display: flex;
+  }
+
+  thead {
+    position: sticky;
+    z-index: 1;
+    overflow: scroll;
+    inline-size: 100%;
+    inset-block-start: 0;
+    // Hides ie scrollbar
+    -ms-overflow-style: none;
+    will-change: transform;
+  }
+
+  thead tr th {
+    border-block-end: 1px solid var(--layer-active);
+  }
+
+  tbody {
+    flex-direction: column;
+    // Hides ie scrollbar
+    -ms-overflow-style: none;
+    overflow-x: scroll;
+    will-change: transform;
+  }
+
+  tr.parent-row.expandable-row {
+    block-size: auto;
+    min-block-size: 3rem;
+  }
+
+  tr.expandable-row:not(.parent-row) {
+    block-size: auto;
+  }
+
+  .table-expand {
+    max-inline-size: convert.to-rem(48px);
+  }
+
+  thead .table-expand {
+    align-items: center;
+  }
+
+  .parent-row {
+    min-block-size: 3rem;
+  }
+
+  &:not(.data-table--xs):not(.data-table--xl):not(.data-table--sm)
+    td:not(.table-column-menu):not(.table-column-checkbox) {
+    padding-block-start: convert.to-rem(14px);
+  }
+
+  // Taken from L125 _data-table-expandable
+  // Used to hide white line when parent row is hovered when child is expanded
+  tr.parent-row.expandable-row:hover + tr[data-child-row] td {
+    border-block-start: 1px solid var(--layer-hover);
+  }
+
+  tr.expandable-row:last-of-type {
+    overflow: hidden;
+  }
+
+  tr.data-table--selected:first-of-type td {
+    border-block-start: none;
+  }
+
+  // Selectable fix
+  thead th.table-column-checkbox,
+  tbody tr td.table-column-checkbox {
+    align-items: center;
+    inline-size: convert.to-rem(36px);
+    min-inline-size: convert.to-rem(36px);
+  }
+
+  &.data-table--xl thead th.table-column-checkbox,
+  &.data-table--xl td.table-column-checkbox {
+    align-items: flex-start;
+  }
+
+  // Overflow fix
+  /* When using sticky header, with a selection element in the first column, we need to set the last item to a fixed width to match the table body. We only want this to happen when the last table header does not have any text */
+  th.table-column-checkbox ~ th:last-of-type:empty {
+    max-inline-size: convert.to-rem(64px);
+  }
+
+  th:empty:not(.table-expand) {
+    max-inline-size: 2.25rem;
+  }
+
+  td.table-column-menu {
+    align-items: center;
+    block-size: auto;
+    padding-block-start: 0;
+  }
+
+  //hides webkit scrollbar
+  thead::-webkit-scrollbar,
+  tbody::-webkit-scrollbar {
+    display: none;
+  }
+
+  //hides ff scrollbar
+  @-moz-document url-prefix() {
+    thead,
+    tbody {
+      scrollbar-width: none;
+    }
+  }
+
+  tbody tr:last-of-type {
+    border-block-end: 0;
+  }
+
+  th:not(.table-column-checkbox):not(.table-column-menu):not(.table-expand):not(
+      .table-column-icon
+    ),
+  td:not(.table-column-checkbox):not(.table-column-menu):not(.table-expand):not(
+      .table-column-icon
+    ) {
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+
+  &.data-table--xs tr:not(.expandable-row),
+  &.data-table--sm tr:not(.expandable-row),
+  &.data-table--xl tr:not(.expandable-row) {
+    block-size: auto;
+  }
+
+  &.data-table--xs tr:not(.expandable-row) {
+    min-block-size: convert.to-rem(24px);
+  }
+
+  &.data-table--sm tr:not(.expandable-row) {
+    min-block-size: convert.to-rem(32px);
+  }
+
+  &.data-table--xl tr:not(.expandable-row) {
+    min-block-size: convert.to-rem(64px);
+  }
+
+  &.data-table--xs tr td.table-expand {
+    padding-block-start: convert.to-rem(4px);
+  }
+
+  &.data-table--sm tr td.table-expand {
+    padding-block-start: convert.to-rem(8px);
+  }
+
+  .table-header-label {
+    display: block;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    max-inline-size: calc(100% - 10px);
+    overflow-y: hidden;
+    padding-block-end: 1rem;
+    padding-block-start: convert.to-rem(15px);
+  }
+
+  &.data-table--xs th .table-header-label {
+    padding-block-end: 0;
+    padding-block-start: convert.to-rem(3px);
+  }
+
+  &.data-table--sm th .table-header-label {
+    padding-block-end: 0;
+    padding-block-start: convert.to-rem(8px);
+  }
+
+  &.data-table--xl th .table-header-label {
+    padding-block-start: 1rem;
+  }
+
+  &.data-table--xl th.table-expand {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &.data-table--xs tr.parent-row .table-column-checkbox,
+  &.data-table--sm tr.parent-row .table-column-checkbox {
+    align-items: flex-start;
+  }
+}
+
+.data-table--max-width {
+  max-inline-size: 100%;
+}
+
+.data-table--sticky-header {
+  max-block-size: 100%;
+}
+// -------------------
+// with boolean column
+// -------------------
+.data-table .form-item.checkbox-wrapper:last-of-type {
+  margin: 0;
+}
+
+.data-table--xs .form-item.checkbox-wrapper:last-of-type,
+.data-table--sm .form-item.checkbox-wrapper:last-of-type {
+  margin: convert.to-rem(-3px) 0;
+}
+
+// Windows HCM fix
+// stylelint-disable-next-line no-duplicate-selectors
+.data-table-content {
+  outline: 1px solid transparent;
+}

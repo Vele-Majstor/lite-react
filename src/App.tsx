@@ -20,6 +20,21 @@ import DefaultCalendar from "./components/DefaultCalendar";
 import MultiSelectCalendar from "./components/MultiSelectCalendar";
 import RangeCalendar from "./components/RangeCalendar";
 import XIcon from "./icons/XIcon";
+import DataTable from "./components/DataTable";
+
+const headers = [
+    { key: "name", header: "Name", isSortable: true },
+    { key: "lastname", header: "LastName", isSortable: true },
+    { key: "email", header: "Email", isSortable: true },
+    { key: "age", header: "Age" },
+];
+const rows = [
+    { name: "Hristijan", lastname: "Veleski", email: "haha", age: 19 },
+    { name: "Anna", lastname: "Couroff", email: "lmao", age: 18 },
+    { name: "Igor", lastname: "Customer", email: "abe", age: 180 },
+    { name: "Santa", lastname: "Claus", email: "neznam", age: 1828 },
+    { name: "Mike", lastname: "Coxlong", email: "mike", age: 8 },
+];
 
 const content = [
     {
@@ -48,6 +63,7 @@ function App() {
         { label: "Istanbul", value: "IST" },
         { label: "Paris", value: "PRS" },
     ];
+    const [selection, setSelection] = useState<(typeof rows)[0] | null>(null);
     const [value, setValue] = useState<string[] | null>(null);
     const [dropdownValue, setDropdownBalue] = useState<string[] | null>(null);
     const [filterValue, setFilterValue] = useState<string>("");
@@ -222,6 +238,15 @@ function App() {
             <RangeCalendar
                 value={date3}
                 onChange={(event) => setDate3(event.value)}
+            />
+
+            <DataTable
+                selectionMode
+                selection={selection}
+                setSelection={setSelection}
+                headers={headers}
+                rows={rows}
+                zebraStyles
             />
         </>
     );
