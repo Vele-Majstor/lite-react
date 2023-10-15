@@ -1,7 +1,12 @@
 {
-  "name": "lite-react",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@Vele-Majstor/lite-react",
+  "description": "Very lightweight React UI component library",
+  "version": "0.0.1",
+  "author": "Hristijan Veleski",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/Vele-Majstor"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
