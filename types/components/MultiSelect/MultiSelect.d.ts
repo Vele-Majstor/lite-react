@@ -1,6 +1,6 @@
 import { LabelValue } from "@/type-utils/listbox";
 import { HTMLAttributes, KeyboardEvent, MouseEvent } from "react";
-import "./Dropdown.scss";
+import "../Dropdown/Dropdown.scss";
 import { ListBoxItemTemplate } from "../ListBox/ListBox.types";
 type Props<T> = {
     maxSelectedLabels?: number;

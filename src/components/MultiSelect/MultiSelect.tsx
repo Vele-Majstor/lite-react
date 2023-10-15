@@ -10,7 +10,7 @@ import {
   useState,
 } from "react";
 
-import "./Dropdown.scss";
+import "../Dropdown/Dropdown.scss";
 import ListBox from "../ListBox/ListBox";
 import { ListBoxItemTemplate } from "../ListBox/ListBox.types";
 import XIcon from "@/icons/XIcon";
