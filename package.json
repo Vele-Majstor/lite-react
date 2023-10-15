@@ -1,7 +1,7 @@
 {
-  "name": "@vele-majstor/lite-react",
+  "name": "@Vele-Majstor/lite-react",
   "description": "Very lightweight React UI component library",
-  "version": "0.0.51",
+  "version": "0.0.52",
   "author": "Hristijan Veleski",
   "license": "MIT",
   "main": "dist/cjs/index.js",
