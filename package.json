@@ -1,7 +1,7 @@
 {
   "name": "@vele-majstor/lite-react",
   "description": "Very lightweight React UI component library",
-  "version": "0.0.46",
+  "version": "0.0.47",
   "author": "Hristijan Veleski",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -10,10 +10,6 @@
     "dist"
   ],
   "types": "dist/index.d.ts",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/Vele-Majstor",
-    "access": "public"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Vele-Majstor/lite-react"
