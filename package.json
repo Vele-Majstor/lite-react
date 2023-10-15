@@ -1,7 +1,7 @@
 {
   "name": "@vele-majstor/lite-react",
   "description": "Very lightweight React UI component library",
-  "version": "0.0.52",
+  "version": "0.0.5",
   "author": "Hristijan Veleski",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -12,12 +12,12 @@
   "types": "dist/index.d.ts",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "@vele-majstor:registry": "https://npm.pkg.github.com/",
+    "@Vele-Majstor:registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vele-Majstor/lite-react.git"
+    "url": "https://github.com/Vele-Majstor/lite-react"
   },
   "type": "module",
   "scripts": {
@@ -39,6 +39,7 @@
     "@rollup/plugin-alias": "^5.0.1",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.5",
     "@storybook/addon-essentials": "^7.4.0",
     "@storybook/addon-interactions": "^7.4.0",
