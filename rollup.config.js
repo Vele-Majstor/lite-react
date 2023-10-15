@@ -12,7 +12,7 @@ import postcss from "rollup-plugin-postcss";
 export default [
     {
         input: "src/index.ts",
-        external: [...Object.keys(packageJson.peerDependencies || {})],
+        external: ["react", "react-dom"],
         output: [
             {
                 file: packageJson.main,
