@@ -1,0 +1,46 @@
+.progress_bar {
+  width: 100%;
+  label {
+    color: grey;
+  }
+
+  &__info {
+    font-size: 17px;
+    justify-content: space-between;
+    display: flex;
+    color: red;
+    text-transform: uppercase;
+  }
+
+  &__percentage {
+    font-weight: bolder;
+  }
+}
+
+.background_bar {
+  background: white;
+  height: 5px;
+  width: 100%;
+}
+
+.tracker_bar {
+  height: 5px;
+  transition: width 0.1s linear;
+  margin-top: -5px;
+
+  &-info {
+    background: #2679a0;
+  }
+
+  &-success {
+    background: #2f8331;
+  }
+
+  &-warning {
+    background: #b59229;
+  }
+
+  &-error {
+    background: #781a24;
+  }
+}

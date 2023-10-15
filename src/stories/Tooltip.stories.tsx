@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import TextInput from "@components/TextInput";
-import Tooltip from "@/components/Tooltip";
-import Button from "@/components/Button";
+import TextInput from "@components/TextInput/TextInput";
+import Tooltip from "@/components/Tooltip/Tooltip";
+import Button from "@/components/Button/Button";
 import { useState } from "react";
 
 const meta: Meta<typeof Tooltip> = {

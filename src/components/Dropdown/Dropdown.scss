@@ -1,0 +1,160 @@
+.dropdown {
+  position: relative;
+  width: 20em;
+  min-height: 1.5em;
+  border: 0.05em solid #777;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em;
+  border-radius: 0.25em;
+  outline: none;
+  background-color: #f4f4f4;
+
+  &_disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &_input {
+    flex-grow: 1;
+    display: flex;
+    gap: 0.5em;
+    flex-wrap: wrap;
+    overflow: hidden;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+    width: 100%;
+    padding: 0 1rem;
+    border: none;
+    background-color: inherit;
+  }
+
+  &_multiselect_input {
+    padding: 4px 4px 4px 0px;
+    height: 1.4375em;
+    flex-grow: 1;
+    width: 0;
+    min-width: 30px;
+    outline: 2px solid transparent;
+    outline-offset: -2px;
+    border: 0;
+    background-color: inherit;
+  }
+
+  &_value {
+    flex-grow: 1;
+    display: flex;
+    gap: 0.5em;
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    &__chip {
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      color: #495057;
+      background: #d1d1d1;
+      border-radius: 3px;
+      border: none;
+    }
+  }
+
+  &_clear_btn {
+    background: none;
+    color: #777;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 0;
+    height: 1rem;
+    width: 1rem;
+    font-size: 1rem;
+
+    &:focus,
+    &:hover {
+      color: #333;
+    }
+  }
+
+  &_divider {
+    background-color: #777;
+    align-self: stretch;
+    width: 0.05em;
+  }
+
+  &_chevron {
+    transition: all 0.25s ease;
+  }
+  &_option {
+    display: flex;
+    flex-grow: 1;
+    gap: 0.25em;
+    flex-wrap: wrap;
+
+    /* Customize the label (the container) */
+    &__container {
+      display: block;
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 12px;
+      cursor: pointer;
+      font-size: 22px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    /* Hide the browser's default checkbox */
+    &__container input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom checkbox */
+    &__checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #eee;
+    }
+
+    /* On mouse-over, add a grey background color */
+    &__container:hover input ~ &__checkmark {
+      background-color: #ccc;
+    }
+
+    /* When the checkbox is checked, add a blue background */
+    &__container input:checked ~ &__checkmark {
+      background-color: #333333;
+    }
+
+    /* Create the checkmark/indicator (hidden when not checked) */
+    &__checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    &__container input:checked ~ &__checkmark:after {
+      display: block;
+    }
+
+    &__container &__checkmark:after {
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 10px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+}

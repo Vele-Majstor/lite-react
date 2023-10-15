@@ -1,0 +1,930 @@
+//----------------------------------------------------------------------------
+// Container
+//----------------------------------------------------------------------------
+.data-table-container {
+  position: relative;
+  // Allow space for focus styles
+  padding-top: var(--spacing-01);
+}
+
+.data-table-content {
+  overflow-x: auto;
+}
+
+.data-table-content:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+
+  @media screen and (prefers-contrast) {
+    outline-style: dotted;
+  }
+}
+
+//----------------------------------------------------------------------------
+// Table title text
+//----------------------------------------------------------------------------
+.data-table-header {
+  padding: var(--spacing-01) 0 var(--spacing-04) var(--spacing-05);
+  background: var(--layer);
+}
+
+.data-table-header__title {
+  font-size: var(--heading-03-font-size, 1.25rem);
+  font-weight: var(--heading-03-font-weight, 400);
+  line-height: var(--heading-03-line-height, 1.4);
+  letter-spacing: var(--heading-03-letter-spacing, 0);
+
+  color: var(--text-primary);
+}
+
+.data-table-header__description {
+  font-size: var(--body-compact-01-font-size, 0.875rem);
+  font-weight: var(--body-compact-01-font-weight, 400);
+  line-height: var(--body-compact-01-line-height, 1.28572);
+  letter-spacing: var(--body-compact-01-letter-spacing, 0.16px);
+
+  color: var(--text-secondary);
+}
+
+//----------------------------------------------------------------------------
+// Data table
+//----------------------------------------------------------------------------
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.data-table thead {
+  font-size: var(--heading-compact-01-font-size, 0.875rem);
+  font-weight: var(--heading-compact-01-font-weight, 600);
+  line-height: var(--heading-compact-01-line-height, 1.28572);
+  letter-spacing: var(--heading-compact-01-letter-spacing, 0.16px);
+  background-color: var(--layer-accent);
+}
+
+.data-table tbody {
+  font-size: var(--heading-compact-01-font-size, 0.875rem);
+  font-weight: var(--heading-compact-01-font-weight, 600);
+  line-height: var(--heading-compact-01-line-height, 1.28572);
+  letter-spacing: var(--heading-compact-01-letter-spacing, 0.16px);
+
+  width: 100%;
+  background-color: var(--layer);
+}
+
+.data-table tr {
+  width: 100%;
+  height: var(--spacing-09);
+  border: none;
+}
+
+.data-table tbody tr,
+.data-table tbody tr td,
+.data-table tbody tr th {
+  transition: background-color var(--duration-fast-01)
+    motion(entrance, productive);
+}
+
+.data-table tbody tr:hover {
+  background: var(--layer-hover);
+}
+
+.data-table tbody tr:hover td,
+.data-table tbody tr:hover th {
+  border-top: 1px solid var(--layer-hover);
+  border-bottom: 1px solid var(--layer-hover);
+  background: var(--layer-hover);
+  color: var(--text-primary);
+}
+
+.data-table tr:hover .link {
+  color: var(--link-secondary);
+}
+
+.data-table tr:hover .link--disabled {
+  color: var(--text-disabled);
+}
+
+.data-table th,
+.data-table td {
+  text-align: left;
+  vertical-align: middle;
+}
+
+.data-table th[align="right"],
+.data-table td[align="right"] {
+  text-align: right;
+}
+
+.data-table th[align="center"],
+.data-table td[align="center"] {
+  text-align: center;
+}
+
+.data-table th {
+  padding-right: var(--spacing-05);
+  padding-left: var(--spacing-05);
+  background-color: var(--layer-accent);
+  color: var(--text-primary);
+}
+
+.data-table th:last-of-type {
+  // Do not use `position: relative`, as its behavior is undefined for many table elements: https://www.w3.org/TR/CSS21/visuren.html#propdef-position
+  position: static;
+  width: auto;
+}
+
+.data-table .table-header-label {
+  text-align: left;
+}
+
+.data-table td,
+.data-table tbody th {
+  padding-right: var(--spacing-05);
+  padding-left: var(--spacing-05);
+  border-top: 1px solid var(--layer);
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--layer);
+  color: var(--text-secondary);
+
+  + td:first-of-type {
+    padding-left: var(--spacing-04);
+  }
+}
+
+@supports (-moz-appearance: none) {
+  .data-table td {
+    // Fix to show borders in ff
+    background-clip: padding-box;
+  }
+}
+
+// Form Control Overrides
+
+.data-table .list-box input[role="combobox"],
+.data-table .list-box input[type="text"],
+.data-table .dropdown,
+.data-table .list-box,
+.data-table .number input[type="number"],
+.data-table .number__control-btn::before,
+.data-table .number__control-btn::after,
+.data-table .text-input,
+.data-table .select-input {
+  background-color: var(--field-02);
+}
+
+// Overflow Menu Overrides
+.data-table td.table-column-menu .overflow-menu[aria-expanded="false"]:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+
+  @media screen and (prefers-contrast) {
+    outline-style: dotted;
+  }
+}
+
+.data-table td.table-column-menu .overflow-menu[aria-expanded="true"]:focus {
+  outline: none;
+}
+
+@media screen and (hover: hover),
+  (-ms-high-contrast: active),
+  (-ms-high-contrast: none) {
+  .data-table td.table-column-menu .overflow-menu .overflow-menu__icon {
+    opacity: 0;
+  }
+}
+
+.data-table
+  td.table-column-menu
+  .overflow-menu.overflow-menu--open
+  .overflow-menu__icon {
+  opacity: 1;
+}
+
+.data-table.data-table--visible-overflow-menu
+  td.table-column-menu
+  .overflow-menu
+  .overflow-menu__icon,
+.data-table td.table-column-menu .overflow-menu:hover .overflow-menu__icon,
+.data-table td.table-column-menu .overflow-menu:focus .overflow-menu__icon,
+.data-table tr:hover td.table-column-menu .overflow-menu .overflow-menu__icon {
+  opacity: 1;
+}
+
+.table-row--menu-option
+  .overflow-menu-options__btn
+  .overflow-menu-options__option-content
+  svg {
+  position: relative;
+  // Used to center svg without setting display flex //display block needed for overflow text truncation
+  top: 0.1rem;
+  margin-right: var(--spacing-03);
+}
+
+.data-table .overflow-menu,
+.data-table .overflow-menu__trigger {
+  &:hover {
+    background-color: var(--layer-selected-hover);
+  }
+}
+
+.data-table--selected .overflow-menu,
+.data-table--selected .overflow-menu__trigger {
+  &:hover {
+    background-color: var(--layer-hover);
+  }
+}
+
+.data-table--selected .link:not(.link--disabled) {
+  color: var(--link-secondary);
+}
+
+.data-table--xs td.table-column-menu,
+.data-table--sm td.table-column-menu {
+  height: 1.5rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.data-table--sm td.table-column-menu {
+  height: 2rem;
+}
+
+.data-table--md td.table-column-menu {
+  height: 2.2rem;
+}
+
+.data-table--xl .table-column-menu {
+  padding-top: var(--spacing-03);
+}
+
+//----------------------------------------------------------------------------
+//ZEBRA
+//----------------------------------------------------------------------------
+
+.data-table--zebra tbody tr:not(.parent-row):nth-child(odd) td {
+  border-bottom: 1px solid var(--layer);
+}
+
+.data-table--zebra tbody tr:not(.parent-row):nth-child(even) td {
+  border-top: 1px solid var(--layer-accent);
+  border-bottom: 1px solid var(--layer-accent);
+  background-color: var(--layer-accent);
+}
+
+.data-table--zebra tbody tr:not(.parent-row):hover td {
+  border-top: 1px solid var(--layer-hover);
+  border-bottom: 1px solid var(--layer-hover);
+  background-color: var(--layer-hover);
+}
+
+//----------------------------------------------------------------------------
+// Select
+//----------------------------------------------------------------------------
+.table-column-checkbox .checkbox-label {
+  padding-left: 0;
+}
+
+.data-table th.table-column-checkbox {
+  // Do not use `position: relative`, as its behavior is undefined for many table elements: https://www.w3.org/TR/CSS21/visuren.html#propdef-position
+  position: static;
+  width: 2rem;
+  background: var(--layer-accent);
+  transition: background-color var(--duration-fast-01)
+    motion(entrance, productive);
+}
+
+.data-table .table-column-checkbox .checkbox:focus + .checkbox-label::before {
+  //make checkbox focus larger to match expansion btn focus
+  outline-offset: 0.4rem;
+}
+
+.data-table--compact
+  .table-column-checkbox
+  .checkbox:focus
+  + .checkbox-label::before,
+.data-table--xs
+  .table-column-checkbox
+  .checkbox:focus
+  + .checkbox-label::before {
+  //make checkbox match expansion button focus size
+  outline-offset: 0.1rem;
+}
+
+.data-table thead th.table-column-checkbox,
+.data-table tbody td.table-column-checkbox,
+.data-table thead th.table-expand,
+.data-table tbody td.table-expand {
+  min-width: 0;
+}
+
+.data-table thead th.table-column-checkbox,
+.data-table tbody td.table-column-checkbox {
+  width: 2.5rem;
+  // spacing between checkbox / chevron and next cell should be 8px / 0.5rem
+  padding-right: 0.25rem;
+  padding-left: 1rem;
+}
+
+.data-table--xl .table-column-checkbox {
+  padding-top: 0.75rem;
+}
+
+// default selected row + zebra select - even child
+.data-table--zebra tbody tr:nth-child(odd).data-table--selected td,
+tr.data-table--selected td {
+  border-top: 1px solid var(--layer-selected);
+  // Bottom border acts as separator from other rows
+  border-bottom: 1px solid var(--layer-active);
+  background-color: var(--layer-selected);
+  color: var(--text-primary);
+}
+
+// First row
+.data-table--zebra
+  tbody
+  tr:first-of-type:nth-child(odd).data-table--selected
+  td,
+tr.data-table--selected:first-of-type td {
+  // Top border acts as separator from thead
+  border-top: 1px solid var(--border-subtle-selected);
+}
+
+// last row + zebra select last
+.data-table--zebra tbody tr:last-of-type:nth-child(odd).data-table--selected td,
+.data-table--zebra
+  tbody
+  tr:last-of-type:nth-child(even).data-table--selected
+  td,
+tr.data-table--selected:last-of-type td {
+  // Doesn't need separators
+  border-top: 1px solid var(--layer-selected);
+  border-bottom: 1px solid var(--layer-selected);
+}
+
+// zebra select - odd child
+.data-table--zebra tbody tr:nth-child(even).data-table--selected td {
+  border-bottom: 1px solid var(--layer-active);
+}
+
+.data-table--zebra tbody tr:nth-child(even).data-table--selected:hover td {
+  border-bottom: 1px solid var(--data-table-column-hover);
+}
+
+// hover + zebra select - even child
+.data-table--zebra tbody tr:nth-child(odd).data-table--selected:hover td,
+.data-table tbody .data-table--selected:hover td {
+  border-top: 1px solid var(--data-table-column-hover);
+  border-bottom: 1px solid var(--data-table-column-hover);
+  background: var(--data-table-column-hover);
+  color: var(--text-primary);
+}
+
+// selected overflow menu
+.data-table--selected .overflow-menu .overflow-menu__icon {
+  opacity: 1;
+}
+
+//----------------------------------------------------------------------------
+// Extra Small
+//----------------------------------------------------------------------------
+.data-table--xs thead tr,
+.data-table--xs tbody tr,
+.data-table--xs tbody tr th {
+  height: 1.5rem;
+}
+
+.data-table--xs .table-header-label {
+  padding-top: 0.13rem;
+  padding-bottom: 0.13rem;
+}
+
+.data-table--xs td,
+.data-table--xs tbody tr th {
+  padding-top: 0.13rem;
+  padding-bottom: 0.13rem;
+}
+
+.data-table--xs .overflow-menu {
+  width: 2rem;
+  height: calc(100% + 1px);
+}
+
+.data-table.data-table--xs .table-column-checkbox {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.data-table.data-table--xs .table-column-checkbox .checkbox-label {
+  height: 1.4rem;
+  min-height: 1.4rem;
+}
+
+//----------------------------------------------------------------------------
+// Small
+//----------------------------------------------------------------------------
+.data-table--sm thead tr,
+.data-table--sm tbody tr,
+.data-table--sm tbody tr th {
+  height: 2rem;
+}
+
+.data-table--sm .table-header-label {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.data-table--sm td,
+.data-table--sm tbody tr th {
+  padding-top: 0.5rem;
+  padding-bottom: 0.4rem;
+}
+
+.data-table.data-table--sm .table-column-checkbox {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.data-table--sm .overflow-menu {
+  height: calc(100% + 1px);
+}
+
+//----------------------------------------------------------------------------
+// Medium
+//----------------------------------------------------------------------------
+.data-table--md thead tr,
+.data-table--md tbody tr,
+.data-table--md tbody tr th {
+  height: 2.5rem;
+}
+
+.data-table--md .table-header-label {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.data-table--md td,
+.data-table--md tbody tr th {
+  padding-top: 0.5rem;
+  padding-bottom: 0.4rem;
+}
+
+.data-table.data-table--md .table-column-checkbox {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.data-table--md .table-column-menu {
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+//----------------------------------------------------------------------------
+// Extra Large
+//----------------------------------------------------------------------------
+.data-table--xl thead tr,
+.data-table--xl tbody tr,
+.data-table--xl tbody tr th {
+  height: 4rem;
+}
+
+.data-table--xl .table-header-label {
+  padding-top: var(--spacing-05);
+  padding-bottom: var(--spacing-05);
+}
+
+.data-table--xl td,
+.data-table--xl tbody tr th {
+  padding-top: 1rem;
+}
+
+.data-table--xl th,
+.data-table--xl td {
+  vertical-align: top;
+}
+
+.data-table--xl .data-table--cell-secondary-text {
+  font-size: var(label-01-font-size, 0.875rem);
+  font-weight: var(label-01-font-weight, 600);
+  line-height: var(label-01-line-height, 1.28572);
+  letter-spacing: var(label-01-letter-spacing, 0.16px);
+}
+
+//----------------------------------------------------------------------------
+// Static
+//----------------------------------------------------------------------------
+.data-table--static {
+  width: auto;
+}
+
+.data-table-container--static {
+  width: fit-content;
+}
+
+// -------------
+// Sticky header
+// -------------
+.data-table_inner-container {
+  background-color: var(--layer-accent);
+  transform: translateZ(0);
+}
+
+.data-table--sticky-header {
+  display: block;
+  overflow-y: scroll;
+
+  thead,
+  tbody,
+  tr,
+  th,
+  td {
+    display: flex;
+  }
+
+  thead {
+    position: sticky;
+    z-index: 1;
+    top: 0;
+    overflow: scroll;
+    width: 100%;
+    -ms-overflow-style: none;
+    will-change: transform;
+  }
+
+  thead tr th {
+    border-bottom: 1px solid var(--layer-active);
+  }
+
+  tbody {
+    flex-direction: column;
+    -ms-overflow-style: none;
+    overflow-x: scroll;
+    will-change: transform;
+  }
+
+  tr.parent-row.expandable-row {
+    height: auto;
+    min-height: 3rem;
+  }
+
+  tr.expandable-row:not(.parent-row) {
+    height: auto;
+  }
+
+  .table-expand {
+    max-width: 3rem;
+  }
+
+  thead .table-expand {
+    align-items: center;
+  }
+
+  .parent-row {
+    min-height: 3rem;
+  }
+
+  &:not(.data-table--xs):not(.data-table--xl):not(.data-table--sm)
+    td:not(.table-column-menu):not(.table-column-checkbox) {
+    padding-top: 0.8rem;
+  }
+
+  // Taken from L125 _data-table-expandable
+  // Used to hide white line when parent row is hovered when child is expanded
+  tr.parent-row.expandable-row:hover + tr[data-child-row] td {
+    border-top: 1px solid var(--layer-hover);
+  }
+
+  tr.expandable-row:last-of-type {
+    overflow: hidden;
+  }
+
+  tr.data-table--selected:first-of-type td {
+    border-top: none;
+  }
+
+  // Selectable fix
+  thead th.table-column-checkbox,
+  tbody tr td.table-column-checkbox {
+    width: 3rem;
+    min-width: 3rem;
+    align-items: center;
+  }
+
+  &.data-table--xl thead th.table-column-checkbox,
+  &.data-table--xl td.table-column-checkbox {
+    align-items: flex-start;
+  }
+
+  // Overflow fix
+  /* When using sticky header, with a selection element in the first column, we need to set the last item to a fixed width to match the table body. We only want this to happen when the last table header does not have any text */
+  th.table-column-checkbox ~ th:last-of-type:empty {
+    max-width: 4rem;
+  }
+
+  th:empty:not(.table-expand) {
+    max-width: 2.25rem;
+  }
+
+  td.table-column-menu {
+    height: auto;
+    align-items: center;
+    padding-top: 0;
+  }
+
+  //hides webkit scrollbar
+  thead::-webkit-scrollbar,
+  tbody::-webkit-scrollbar {
+    display: none;
+  }
+
+  //hides ff scrollbar
+  @-moz-document url-prefix() {
+    thead,
+    tbody {
+      scrollbar-width: none;
+    }
+  }
+
+  tbody tr:last-of-type {
+    border-bottom: 0;
+  }
+
+  th:not(.table-column-checkbox):not(.table-column-menu):not(.table-expand):not(
+      .table-column-icon
+    ),
+  td:not(.table-column-checkbox):not(.table-column-menu):not(.table-expand):not(
+      .table-column-icon
+    ) {
+    width: 100%;
+    min-width: 0;
+  }
+
+  &.data-table--xs tr:not(.expandable-row),
+  &.data-table--sm tr:not(.expandable-row),
+  &.data-table--xl tr:not(.expandable-row) {
+    height: auto;
+  }
+
+  &.data-table--xs tr:not(.expandable-row) {
+    min-height: 1.5rem;
+  }
+
+  &.data-table--sm tr:not(.expandable-row) {
+    min-height: 2rem;
+  }
+
+  &.data-table--xl tr:not(.expandable-row) {
+    min-height: 4rem;
+  }
+
+  // Expansion overrides
+  &.data-table--xs tr td.table-expand {
+    padding-top: 0.25rem;
+  }
+
+  &.data-table--sm tr td.table-expand {
+    padding-top: 0.5rem;
+  }
+
+  .table-header-label {
+    display: block;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    max-width: calc(100% - 10px);
+    // Needed to reduce 1px jump when toggling between variations
+    padding-top: 0.9rem;
+    padding-bottom: 1rem;
+    overflow-y: hidden;
+  }
+
+  &.data-table--xs th .table-header-label {
+    padding-top: 0.2rem;
+    padding-bottom: 0;
+  }
+
+  &.data-table--sm th .table-header-label {
+    padding-top: 0.5rem;
+    padding-bottom: 0;
+  }
+
+  &.data-table--xl th .table-header-label {
+    padding-top: 1rem;
+  }
+
+  &.data-table--xl th.table-expand {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &.data-table--xs tr.parent-row .table-column-checkbox,
+  &.data-table--sm tr.parent-row .table-column-checkbox {
+    align-items: flex-start;
+  }
+}
+
+.data-table--max-width {
+  max-width: 100%;
+}
+
+.data-table--sticky-header {
+  max-height: 100%;
+}
+// -------------------
+// with boolean column
+// -------------------
+.data-table .form-item.checkbox-wrapper:last-of-type {
+  margin: 0;
+}
+
+.data-table--xs .form-item.checkbox-wrapper:last-of-type,
+.data-table--sm .form-item.checkbox-wrapper:last-of-type {
+  margin: -0.1rem 0;
+}
+
+// Windows HCM fix
+// stylelint-disable-next-line no-duplicate-selectors
+.data-table-content {
+  outline: 1px solid transparent;
+}
+
+// -------------------------------------
+// Sortable table
+// -------------------------------------
+.data-table--sort th,
+.data-table th[aria-sort] {
+  height: var(--spacing-09);
+  padding: 0;
+  border-top: none;
+  border-bottom: none;
+}
+
+// -------------------------------------
+// Th > Button
+// -------------------------------------
+.table-sort {
+  padding: 0;
+  border: 0;
+  appearance: none;
+  background: none;
+  cursor: pointer;
+
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: var(--spacing-05);
+  background-color: var(--layer-accent);
+  color: var(--text-primary);
+  font: inherit;
+  line-height: 1;
+  text-align: left;
+  transition: background-color var(--duration-fast-01)
+      motion(entrance, productive),
+    outline var(--duration-fast-01) motion(entrance, productive);
+}
+
+.table-sort:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: -2px;
+
+  @media screen and (prefers-contrast) {
+    outline-style: dotted;
+  }
+}
+
+.table-sort:hover {
+  background: var(--data-table-column-hover);
+}
+
+.table-sort:focus svg,
+.table-sort:hover svg {
+  opacity: 1;
+}
+
+.data-table.data-table--sort th > .table-header-label {
+  padding-right: var(--spacing-05);
+  padding-left: var(--spacing-05);
+}
+
+th .table-sort__flex {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.data-table--sort:not(.data-table--xs):not(.data-table--sm):not(
+    .data-table--md
+  ):not(.data-table--xl)
+  th
+  .table-sort__flex {
+  @media screen and (-ms-high-contrast: active),
+    screen and (-ms-high-contrast: none) {
+    height: 2.99rem;
+  }
+}
+
+.data-table--xs.data-table--sort th .table-sort__flex {
+  min-height: 1.5rem;
+}
+
+.data-table--sm.data-table--sort th .table-sort__flex {
+  min-height: 2rem;
+}
+
+.data-table--md.data-table--sort th .table-sort__flex {
+  min-height: 2.5rem;
+}
+
+.data-table--xl.data-table--sort th .table-sort__flex {
+  min-height: 4rem;
+  align-items: flex-start;
+}
+
+.table-sort .table-sort__icon-inactive {
+  display: block;
+}
+
+.table-sort .table-sort__icon {
+  display: none;
+}
+
+.table-sort__icon-unsorted {
+  width: 1.2rem;
+  min-width: var(--spacing-05);
+  margin-right: var(--spacing-03);
+  margin-left: var(--spacing-03);
+  fill: var(--icon-primary);
+  opacity: 0;
+}
+
+.table-sort.table-sort--active {
+  background: var(--data-table-column-hover);
+}
+
+// active icons
+.table-sort--active .table-sort__icon-unsorted {
+  display: none;
+}
+
+.table-sort--active .table-sort__icon {
+  display: block;
+  opacity: 1;
+}
+
+.table-sort--descending .table-sort__icon {
+  transform: rotate(180deg);
+}
+
+.table-sort__icon {
+  width: 1.2rem;
+  min-width: var(--spacing-05);
+  margin-right: var(--spacing-03);
+  margin-left: var(--spacing-03);
+  fill: var(--icon-primary);
+  opacity: 1;
+  transform: rotate(0);
+  transition: transform 0.2s ease;
+}
+
+.data-table--xs.data-table--sort th {
+  height: 1.5rem;
+}
+
+// Sortable Short
+.data-table--sm.data-table--sort th {
+  height: 2rem;
+}
+
+// Sortable Medium
+.data-table--md.data-table--sort th {
+  height: 2.2rem;
+}
+
+// Sortable Tall
+.data-table--xl.data-table--sort th {
+  height: 4rem;
+}
+
+.data-table--xl.data-table--sort th .table-sort {
+  display: inline-block;
+  height: 4rem;
+}
+
+.data-table--xl .table-sort__icon-unsorted,
+.data-table--xl .table-sort__icon {
+  margin-top: 0.8rem;
+}
+
+// Windows HCM fix
+.table-sort__icon,
+.table-sort__icon-unsorted {
+  fill: ButtonText;
+}
