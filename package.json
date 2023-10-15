@@ -11,6 +11,7 @@
   ],
   "types": "dist/index.d.ts",
   "publishConfig": {
+    "registry": "https://npm.pkg.github.com/Vele-Majstor",
     "access": "public"
   },
   "repository": {
