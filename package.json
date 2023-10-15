@@ -1,5 +1,5 @@
 {
-  "name": "@Vele-Majstor/lite-react",
+  "name": "@vele-majstor/lite-react",
   "description": "Very lightweight React UI component library",
   "version": "0.0.52",
   "author": "Hristijan Veleski",
@@ -12,7 +12,7 @@
   "types": "dist/index.d.ts",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
-    "@Vele-Majstor:registry": "https://npm.pkg.github.com/",
+    "@vele-majstor:registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "repository": {
