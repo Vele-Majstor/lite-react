@@ -100,6 +100,9 @@ devDependencies:
   rollup-plugin-dts:
     specifier: ^6.1.0
     version: 6.1.0(rollup@4.1.1)(typescript@5.2.2)
+  rollup-plugin-peer-deps-external:
+    specifier: ^2.2.4
+    version: 2.2.4(rollup@4.1.1)
   rollup-plugin-postcss:
     specifier: ^4.0.2
     version: 4.0.2(postcss@8.4.29)
@@ -8787,6 +8790,14 @@ packages:
       typescript: 5.2.2
     optionalDependencies:
       '@babel/code-frame': 7.22.13
+    dev: true
+
+  /rollup-plugin-peer-deps-external@2.2.4(rollup@4.1.1):
+    resolution: {integrity: sha512-AWdukIM1+k5JDdAqV/Cxd+nejvno2FVLVeZ74NKggm3Q5s9cbbcOgUPGdbxPi4BXu7xGaZ8HG12F+thImYu/0g==}
+    peerDependencies:
+      rollup: '*'
+    dependencies:
+      rollup: 4.1.1
     dev: true
 
   /rollup-plugin-postcss@4.0.2(postcss@8.4.29):
