@@ -12,7 +12,12 @@ import postcss from "rollup-plugin-postcss";
 export default [
     {
         input: "src/index.ts",
-        external: ["react", "react-dom"],
+        external: [
+            "react",
+            "react-dom",
+            "react-transition-group",
+            "@types/react-transition-group",
+        ],
         output: [
             {
                 file: packageJson.main,
@@ -26,7 +31,6 @@ export default [
             },
         ],
         plugins: [
-            peerDepsExternal(),
             resolve(),
             commonjs(),
             typescript({ tsconfig: "./tsconfig.json" }),
