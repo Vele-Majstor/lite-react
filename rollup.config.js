@@ -60,6 +60,6 @@ export default [
       file: "dist/style.css",
       name: "style",
     },
-    plugins: [postcss()],
+    plugins: [postcss({ extract: true, modules: true })],
   },
 ];
