@@ -1,7 +1,7 @@
 {
   "name": "@vele-majstor/lite-react",
   "description": "Very lightweight React UI component library",
-  "version": "0.0.68",
+  "version": "0.0.69",
   "author": "Hristijan Veleski",
   "license": "MIT",
   "main": "dist/cjs/index.js",
@@ -63,7 +63,6 @@
     "eslint-plugin-storybook": "^0.6.13",
     "rollup": "^4.1.1",
     "rollup-plugin-dts": "^6.1.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "sass": "^1.66.1",
     "sass-loader": "^13.3.2",

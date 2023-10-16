@@ -48,6 +48,7 @@
     gap: 0.5em;
     flex-wrap: wrap;
     overflow: hidden;
+    color: var(--text-01, #161616);
 
     &__chip {
       cursor: pointer;
