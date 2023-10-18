@@ -101,7 +101,7 @@ const Toast = forwardRef<HTMLDivElement, Props>(
       >
         <div onMouseEnter={onReset} onMouseLeave={onStart} className={"toast"}>
           <div className={"messageContent"}>
-            <span className={"toastIcon"}>{icon}</span>
+            <span className={`toastIcon-${severity}`}>{icon}</span>
             <div className={"messageText"}>
               {summary && <span className={"toastSummary"}>{summary}</span>}
               {detail && <span className={"toastDetail"}>{detail}</span>}

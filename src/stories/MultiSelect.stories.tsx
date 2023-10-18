@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Dropdown from "@components/Dropdown";
+import MultiSelect from "@/components/MultiSelect";
 import { useState } from "react";
 import { LabelValue } from "@/type-utils/listbox";
 import { Canvas, Controls, Title } from "@storybook/blocks";
 
-const meta: Meta<typeof Dropdown> = {
-  component: Dropdown,
+const meta: Meta<typeof MultiSelect> = {
+  component: MultiSelect,
   tags: ["autodocs"],
   parameters: {
     docs: {
@@ -23,7 +23,7 @@ const meta: Meta<typeof Dropdown> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Dropdown>;
+type Story = StoryObj<typeof MultiSelect>;
 
 const options: LabelValue[] = [
   { label: "Berlin", value: "Berlin" },
@@ -36,10 +36,10 @@ const options: LabelValue[] = [
 
 export const Basic: Story = {
   render: (args) => {
-    const [value, setValue] = useState<string | null>(null);
+    const [value, setValue] = useState<string[] | null>(null);
 
     return (
-      <Dropdown
+      <MultiSelect
         {...args}
         options={options}
         value={value}
@@ -53,10 +53,10 @@ export const Basic: Story = {
 
 export const SmartPositioning: Story = {
   render: (args) => {
-    const [value, setValue] = useState<string | null>(null);
+    const [value, setValue] = useState<string[] | null>(null);
 
     return (
-      <Dropdown
+      <MultiSelect
         {...args}
         options={options}
         value={value}

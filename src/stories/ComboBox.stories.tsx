@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
-import Dropdown from "@components/Dropdown";
+import ComboBox from "@/components/ComboBox";
 import { useState } from "react";
 import { LabelValue } from "@/type-utils/listbox";
 import { Canvas, Controls, Title } from "@storybook/blocks";
 
-const meta: Meta<typeof Dropdown> = {
-  component: Dropdown,
+const meta: Meta<typeof ComboBox> = {
+  component: ComboBox,
   tags: ["autodocs"],
   parameters: {
     docs: {
@@ -23,7 +23,7 @@ const meta: Meta<typeof Dropdown> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Dropdown>;
+type Story = StoryObj<typeof ComboBox>;
 
 const options: LabelValue[] = [
   { label: "Berlin", value: "Berlin" },
@@ -37,11 +37,14 @@ const options: LabelValue[] = [
 export const Basic: Story = {
   render: (args) => {
     const [value, setValue] = useState<string | null>(null);
+    const [filterValue, setFilterValue] = useState<string>("");
 
     return (
-      <Dropdown
+      <ComboBox
         {...args}
         options={options}
+        filterValue={filterValue}
+        onChangeFilterValue={setFilterValue}
         value={value}
         onChange={(e) => {
           setValue(e.value);
@@ -54,12 +57,15 @@ export const Basic: Story = {
 export const SmartPositioning: Story = {
   render: (args) => {
     const [value, setValue] = useState<string | null>(null);
+    const [filterValue, setFilterValue] = useState<string>("");
 
     return (
-      <Dropdown
+      <ComboBox
         {...args}
         options={options}
         value={value}
+        filterValue={filterValue}
+        onChangeFilterValue={setFilterValue}
         onChange={(e) => {
           setValue(e.value);
         }}

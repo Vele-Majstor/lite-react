@@ -5,6 +5,11 @@
   width: 25rem;
   z-index: var(--toast-container);
 
+  &-bottom-left {
+    left: 0.5rem;
+    bottom: 1rem;
+  }
+
   &-top-right {
     top: 1rem;
     right: 0.5rem;
@@ -45,11 +50,11 @@
     @include severity(#224a23, #c8e6c9, #439446);
   }
 
-  &-warning {
+  &-warn {
     @include severity(#6d5100, #ffecb3, #d9a300);
   }
 
-  &-error {
+  &-danger {
     @include severity(#73000c, #ffcdd2, #e60017);
   }
 }
@@ -62,6 +67,22 @@
 
 .toastIcon {
   font-size: 2rem;
+
+  &-info {
+    fill: #044868;
+  }
+
+  &-success {
+    fill: #224a23;
+  }
+
+  &-warn {
+    fill: #6d5100;
+  }
+
+  &-danger {
+    fill: #73000c;
+  }
 }
 
 .messageText {
@@ -115,7 +136,7 @@
     }
   }
 
-  &-warning {
+  &-warn {
     color: inherit;
     &:hover {
       color: lighten(#6d5100, 10%);
@@ -123,7 +144,7 @@
     }
   }
 
-  &-error {
+  &-danger {
     color: inherit;
     &:hover {
       color: lighten(#73000c, 10%);

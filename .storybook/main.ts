@@ -8,6 +8,15 @@ const config: StorybookConfig = {
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
     "@storybook/addon-styling",
+    {
+      name: "@storybook/addon-storysource",
+      options: {
+        loaderOptions: {
+          injectStoryParameters: true,
+          prettierConfig: { printWidth: 80, singleQuote: false },
+        },
+      },
+    },
   ],
   framework: {
     name: "@storybook/react-vite",

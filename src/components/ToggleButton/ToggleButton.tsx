@@ -27,6 +27,7 @@ const ToggleButton = forwardRef<HTMLInputElement, Props>(
   (
     {
       labelText,
+      checked,
       onLabel,
       offLabel,
       size = "md",
@@ -78,12 +79,16 @@ const ToggleButton = forwardRef<HTMLInputElement, Props>(
                 <path d="M2.2 2.7L5 0 6 1 2.2 5 0 2.7 1 1.5z" />
               </svg>
             )}
-            <span className={"toggle_input__text_off"} aria-hidden="true">
-              {offLabel}
-            </span>
-            <span className={"toggle_input__text_on"} aria-hidden="true">
-              {onLabel}
-            </span>
+            {!checked && offLabel && (
+              <span className={"toggle_input__text_off"} aria-hidden="true">
+                {offLabel}
+              </span>
+            )}
+            {checked && onLabel && (
+              <span className={"toggle_input__text_on"} aria-hidden="true">
+                {onLabel}
+              </span>
+            )}
           </span>
         </label>
       </div>

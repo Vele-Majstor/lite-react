@@ -1,65 +1,66 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import TextArea from "@components/TextArea/TextArea";
+import { Canvas, Controls, Title } from "@storybook/blocks";
 
 const meta: Meta<typeof TextArea> = {
   component: TextArea,
+  tags: ["autodocs"],
+  parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+
+          <Canvas of={Basic} />
+          <Controls of={Basic} />
+        </>
+      ),
+      source: { type: "code" },
+    },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof TextArea>;
 
 export const Basic: Story = {
-  render: () => (
+  render: (args) => (
     <>
-      <TextArea
-        id="primary"
-        label="Label for input"
-        helperText="Helper text"
-        placeholder="Placeholder text"
-      />
+      <TextArea {...args} />
     </>
   ),
+  args: {
+    id: "primary",
+    label: "Label for input",
+    helperText: "Helper text",
+    placeholder: "Placeholder text",
+  },
 };
 
 export const Disabled: Story = {
-  render: () => (
+  render: (args) => (
     <>
-      <TextArea
-        id="primary"
-        label="Label for input"
-        helperText="Helper text"
-        placeholder="Placeholder text"
-        disabled
-      />
+      <TextArea {...args} />
     </>
   ),
+  args: { ...Basic.args, disabled: true },
 };
 
 export const Invalid: Story = {
-  render: () => (
+  render: (args) => (
     <>
-      <TextArea
-        id="primary"
-        label="Label for input"
-        helperText="Helper text"
-        placeholder="Placeholder text"
-        invalid
-      />
+      <TextArea {...args} />
     </>
   ),
+  args: { ...Basic.args, invalid: true },
 };
 
 export const Light: Story = {
-  render: () => (
+  render: (args) => (
     <>
-      <TextArea
-        id="primary"
-        label="Label for input"
-        helperText="Helper text"
-        placeholder="Placeholder text"
-        light
-      />
+      <TextArea {...args} />
     </>
   ),
+  args: { ...Basic.args, light: true },
 };

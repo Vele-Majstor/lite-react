@@ -1,10 +1,26 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { Canvas, Controls, Subtitle, Title } from "@storybook/blocks";
 
 import Button from "@components/Button/Button";
 import XIcon from "@/icons/XIcon";
 
 const meta: Meta<typeof Button> = {
   component: Button,
+  tags: ["autodocs"],
+  parameters: {
+    docs: {
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+
+          <Canvas of={Customize} />
+          <Controls of={Customize} />
+        </>
+      ),
+      source: { type: "code" },
+    },
+  },
 };
 
 export default meta;
@@ -67,4 +83,12 @@ export const Icon: Story = {
       </div>
     ),
   ],
+};
+
+export const Customize: Story = {
+  render: (args) => <Button {...args} />,
+  args: {
+    severity: "primary",
+    label: "Edit me",
+  },
 };

@@ -3,7 +3,7 @@ import "@/styles/_styles.scss";
 import Button from "./components/Button/Button";
 import ComboMultiSelect from "./components/ComboMultiSelect/ComboMultiSelect";
 import Modal from "./components/Modal/Modal";
-import NumberInput from "./components/NumberInput/NumberInput";
+import PasswordInput from "./components/PasswordInput/PasswordInput";
 import ToastContainer from "./components/Toast/ToastContainer";
 import { ToastFunctions } from "./components/Toast/Toast.types";
 import Checkbox from "./components/Checkbox/Checkbox";
@@ -110,7 +110,7 @@ function App() {
           label="Open modal"
           onClick={() => {
             toastRef.current?.show({
-              severity: "success",
+              severity: "danger",
               summary: "Success Message",
               detail: "Order submitted",
               sticky: true,
@@ -175,12 +175,13 @@ function App() {
           <h2>Lmfao</h2>
           <h2>Lmfao</h2>
         </Modal>
-        <NumberInput
+        <PasswordInput
           value={number}
           onChange={(e) => setNumber(e.value)}
           id="textInput"
           label="Text input label"
           helperText="Helper Text"
+          disabled
         />
         <RadioButtonGroup legendText="Radio Button group">
           <RadioButton
@@ -206,6 +207,8 @@ function App() {
           id="toggleButton"
           checked={toggled}
           onChange={(e) => setToggled(e.value)}
+          onLabel="Toggled"
+          offLabel="Not Toggled"
         />
 
         <h3>Uncontrolled Accordion</h3>

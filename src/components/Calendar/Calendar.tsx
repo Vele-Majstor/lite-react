@@ -13,6 +13,7 @@ import {
   days,
   daysInMonth,
   getDaysInMonthUTC,
+  getUTCTimeStamp,
   months,
 } from "./Calendar.functions";
 import { classNames } from "@/utils/classnames";
@@ -104,32 +105,36 @@ function MonthPicker({
   maxDate,
 }: MonthPickerProps): JSX.Element {
   const nextMonth = () => {
-    if (currentMonth < 11) {
-      setCurrentMonth((prev) => prev + 1);
-    } else {
-      setCurrentMonth(0);
-      setCurrentYear((prev) => prev + 1);
+    if (maxDate.getTime() >= new Date(currentYear, currentMonth).getTime()) {
+      if (currentMonth < 11) {
+        setCurrentMonth((prev) => prev + 1);
+      } else {
+        setCurrentMonth(0);
+        setCurrentYear((prev) => prev + 1);
+      }
     }
   };
 
   const nextYear = () => {
-    if (maxDate.getTime() >= new Date(currentYear + 1).getTime()) {
+    if (maxDate.getTime() >= new Date((currentYear + 1).toString()).getTime()) {
       setCurrentYear((prev) => prev + 1);
     }
   };
 
   const prevYear = () => {
-    if (minDate.getTime() <= new Date(currentYear - 1).getTime()) {
+    if (minDate.getTime() <= new Date((currentYear - 1).toString()).getTime()) {
       setCurrentYear((prev) => prev - 1);
     }
   };
 
   const prevMonth = () => {
-    if (currentMonth > 0) {
-      setCurrentMonth((prev) => prev - 1);
-    } else {
-      setCurrentMonth(11);
-      setCurrentYear((prev) => prev - 1);
+    if (minDate.getTime() <= new Date(currentYear, currentMonth).getTime()) {
+      if (currentMonth > 0) {
+        setCurrentMonth((prev) => prev - 1);
+      } else {
+        setCurrentMonth(11);
+        setCurrentYear((prev) => prev - 1);
+      }
     }
   };
 
@@ -211,8 +216,8 @@ function CalendarBody({
           tabIndex={0}
           disabled={
             date.getUTCMonth() !== currentMonth ||
-            minDate.getTime() > date.getTime() ||
-            maxDate.getTime() < date.getTime()
+            getUTCTimeStamp(minDate) > getUTCTimeStamp(date) ||
+            getUTCTimeStamp(maxDate) < getUTCTimeStamp(date)
           }
           className={classNames("date_picker__body--date", {
             "date_picker__body--date--selected": isDateSelected(date),
