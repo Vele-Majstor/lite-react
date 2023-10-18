@@ -29,8 +29,7 @@
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
         "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build",
-        "chromatic": "npx chromatic --project-token=chpt_6f7898f3b70d1e3"
+        "build-storybook": "storybook build"
     },
     "dependencies": {
         "@types/react-transition-group": "^4.4.6",
