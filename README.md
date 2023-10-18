@@ -1,27 +1,32 @@
-# React + TypeScript + Vite
+# lite-react - A Lightweight React Library (Beta)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Version](https://img.shields.io/badge/version-0.1.0--beta-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-Currently, two official plugins are available:
+Welcome to the "lite-react" library - a lightweight, minimalistic React library focused on providing essential features for your React applications while keeping it incredibly light. This library is currently in beta, so please feel free to test it out and provide your feedback.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+You can install "lite-react" using npm or yarn:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Using npm:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+npm i @vele-majstor/lite-react
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Using yarn:
+
+```bash
+yarn add @vele-majstor/lite-react
+```
+
+Using pnpm:
+
+```bash
+pnpm i @vele-majstor/lite-react
+```
+
+## Storybook
+
+You can check out my storybook [here](http://www.chromatic.com/library?appId=652ef0906dc3bc58efadad32)
