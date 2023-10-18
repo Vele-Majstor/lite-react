@@ -7,7 +7,7 @@ Welcome to the "lite-react" library - a lightweight, minimalistic React library 
 
 ## Installation
 
-You can install "lite-react" using npm or yarn:
+You can install "lite-react" using npm, yarn or pnpm:
 
 Using npm:
 
