@@ -1,7 +1,7 @@
 {
     "name": "@vele-majstor/lite-react",
     "description": "Very lightweight React UI component library",
-    "version": "0.0.73",
+    "version": "0.0.74",
     "author": {
         "name": "Hristijan Veleski"
     },
@@ -15,19 +15,10 @@
         "react",
         "ui-components",
         "component-library",
-        "design-system",
-        "frontend",
         "web-development",
         "javascript",
         "css",
-        "responsive",
-        "accessible",
-        "material-ui",
-        "ant-design",
-        "bootstrap",
-        "themeable",
         "open-source",
-        "modern-ui",
         "npm-package"
     ],
     "types": "dist/index.d.ts",
