@@ -29,7 +29,7 @@ pnpm i @vele-majstor/lite-react
 
 ## Usage
 
-Before using the library you will need to import the css variables and then you can use the Library like this:
+Before using the library you will need to import the css variables in your main.tsx or App.tsx file and then you can use the Library like this:
 
 ```js
 import React, { useState } from "react";
@@ -38,9 +38,11 @@ import { Button } from "@vele-majstor/lite-react";
 // CSS Variables
 import "@vele-majstor/lite-react/dist/style.css";
 
-const Example = () => {
+const App = () => {
   return <Button severity="primary" label="Hello World" size="normal" />;
 };
+
+export default App;
 ```
 
 ## Storybook

@@ -11,6 +11,25 @@
     "files": [
         "dist"
     ],
+    "keywords": [
+        "react",
+        "ui-components",
+        "component-library",
+        "design-system",
+        "frontend",
+        "web-development",
+        "javascript",
+        "css",
+        "responsive",
+        "accessible",
+        "material-ui",
+        "ant-design",
+        "bootstrap",
+        "themeable",
+        "open-source",
+        "modern-ui",
+        "npm-package"
+    ],
     "types": "dist/index.d.ts",
     "publishConfig": {
         "registry": "https://registry.npmjs.org/",
