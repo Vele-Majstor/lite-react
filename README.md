@@ -27,6 +27,22 @@ Using pnpm:
 pnpm i @vele-majstor/lite-react
 ```
 
+## Usage
+
+Before using the library you will need to import the css variables and then you can use the Library like this:
+
+```js
+import React, { useState } from "react";
+import { Button } from "@vele-majstor/lite-react";
+
+// CSS Variables
+import "@vele-majstor/lite-react/dist/style.css";
+
+const Example = () => {
+  return <Button severity="primary" label="Hello World" size="normal" />;
+};
+```
+
 ## Storybook
 
 You can check out my storybook [here](http://www.chromatic.com/library?appId=652ef0906dc3bc58efadad32)

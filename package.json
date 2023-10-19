@@ -1,7 +1,7 @@
 {
     "name": "@vele-majstor/lite-react",
     "description": "Very lightweight React UI component library",
-    "version": "0.0.72",
+    "version": "0.0.73",
     "author": {
         "name": "Hristijan Veleski"
     },
